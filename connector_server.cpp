@@ -21,7 +21,7 @@ void Connector_Server::slotNewConnection()
 {
     static unsigned int numbersOfConnections;
     QTcpSocket *connected_ClientSocket = connected_Server->nextPendingConnection();
-//    connect(connected_ClientSocket, SIGNAL(disconnected()), this, SLOT(deleteLater()));
+//  connect(connected_ClientSocket, SIGNAL(disconnected()), this, SLOT(deleteLater()));
     connect(connected_ClientSocket, SIGNAL(readyRead()), this, SLOT(slotReadClient()));
     numbersOfConnections++;
     qDebug() << "You have new connection! Server" << numbersOfConnections;

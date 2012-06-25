@@ -5,7 +5,8 @@ Connector_Client::Connector_Client(const QString &Host_Name, int nPort)
 {
     connected_Socket = new QTcpSocket(this);
     connected_Socket->connectToHost(Host_Name,nPort);
-    connect(connected_Socket, SIGNAL(connected()),SLOT(slotConnected()));
+    connect(connected_Socket, SIGNAL(connected()), SLOT(slotConnected()));
+    connect(connected_Socket, SIGNAL(disconnected()), this, SIGNAL(connection_lost()));
 }
 
 void Connector_Client::slotSendToServer(QString send_str)

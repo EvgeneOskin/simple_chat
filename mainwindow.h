@@ -33,6 +33,7 @@ public:
 public slots:
     void slotReadStr();
     void slotRead_Conection_Name();
+    void Server_disconnected();
 
 signals:
     void close_MainWindow();

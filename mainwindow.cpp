@@ -48,6 +48,7 @@ MainWindow::MainWindow()
     QObject::connect(this, SIGNAL(NewInput_Self(QString)), C_connector, SLOT(slotSendToServer(QString)));
     QObject::connect(S_connector, SIGNAL(NewOutput(QString)), out_text, SLOT(setText(QString)));
     QObject::connect(exit_PshBttn, SIGNAL(clicked()), this, SIGNAL(close_MainWindow()));
+    QObject::connect(C_connector, SIGNAL(connection_lost()), this, SIGNAL(close_MainWindow()));
 
 }
 
@@ -69,4 +70,11 @@ void MainWindow::slotRead_Conection_Name()
     delete C_connector;
     C_connector = new Connector_Client(Connection_Name,2323);
     QObject::connect(this, SIGNAL(NewInput_Self(QString)), C_connector, SLOT(slotSendToServer(QString)));
+}
+
+void MainWindow::Server_disconnected()
+{
+    out_text->setText("Sorry, I\'m lost connection with Server");
+    input_text->setText("Sorry, I\'m lost connection with Server");
+    input_text->setReadOnly(true);
 }

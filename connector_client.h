@@ -16,6 +16,9 @@ private:
 public:
     Connector_Client(const QString &Host_Name, int nPort);
 
+signals:
+    void connection_lost();
+
 public slots:
     void slotSendToServer(QString);
     void slotConnected();

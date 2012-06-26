@@ -13,6 +13,7 @@ class MainWindow : public QWidget
 
 private:
     QLabel *comment_label;
+    QLabel *connection_label;
     QLabel *out_label;
     QLabel *in_label;
     QLineEdit *in_connection_name;
@@ -33,7 +34,8 @@ public:
 public slots:
     void slotReadStr();
     void slotRead_Conection_Name();
-    void Server_disconnected();
+    void slotServer_disconnected();
+    void slotCheckConnection();
 
 signals:
     void close_MainWindow();

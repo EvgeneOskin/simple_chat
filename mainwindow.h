@@ -27,6 +27,7 @@ private:
     QBoxLayout *total_Layout;
     Connector_Server *S_connector;
     Connector_Client *C_connector;
+    QString Connection_Name;
 
 public:
     MainWindow();

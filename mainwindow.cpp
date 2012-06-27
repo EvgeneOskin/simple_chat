@@ -66,7 +66,6 @@ void MainWindow::slotReadStr()
 
 void MainWindow::slotRead_Conection_Name()
 {
-    QString Connection_Name;
     Connection_Name = in_connection_name->text();
     in_connection_name->setText("");
     C_connector->disconnect();
@@ -83,7 +82,7 @@ void MainWindow::slotServer_disconnected()
     input_text->setText("Sorry, I\'m lost connection with Server");
     input_text->setReadOnly(true);
     bool bOk;
-    QString Connection_Name = QInputDialog::getText(this, "host name",
+    Connection_Name = QInputDialog::getText(this, "host name",
                                                     "Sorry, i lost current connection\nPlease input new host name (or IP):",
                                                     QLineEdit::Normal, "", &bOk);
     if(bOk)
@@ -104,7 +103,9 @@ void MainWindow::slotCheckConnection()
         slotServer_disconnected();
     else
     {
-        connection_label->setText("Conected!");
+        Connection_Name = "Conected to " + Connection_Name + "!";
+        connection_label->setText(Connection_Name);
+        Connection_Name = "";
         out_text->setText("");
         input_text->setText("");
         input_text->setReadOnly(false);
